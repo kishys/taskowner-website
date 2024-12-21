@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<link rel="icon" href="images/taskninja.png">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KS - TaskNinja</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="coolbox">
+    <div class="clock">
+        <span id="hrs">00</span>
+        <span>:</span>
+        <span id="min">00</span>
+        <span>:</span>
+        <span id="sec">00</span>
+    </div>
+</div>
+<div class="container">
+    <div class="todo-app">
+        <h2>TaskNinja: Master Your Time; Elevate Your Day<img src="images/icon.png"></h2>
+        <div class="row">
+            <input type="text" id="input-box" placeholder="Add Your Task">
+            <button onclick="addTask()">Add Task</button>
+        </div>
+
+        <ul id="list-container">
+        </ul>
+    </div>
+
+</div>
+
+<script>
+let hrs = document.getElementById("hrs");
+let min = document.getElementById("min");
+let sec = document.getElementById("sec");
+
+setInterval(()=>{
+    let currentTime = new Date();
+
+    hrs.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
+    min.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
+    sec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
+
+},1000)
+
+</script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
