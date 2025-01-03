@@ -7,15 +7,60 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="coolbox">
-    <div class="clock">
-        <span id="hrs">00</span>
-        <span>:</span>
-        <span id="min">00</span>
-        <span>:</span>
-        <span id="sec">00</span>
+
+<!--Navbar-->
+<nav class="navbar">
+    <div class="nav-links">
+        <a href="#" class="nav-item">Home</a>
+        <a href="#" class="nav-item">Tasks</a>
+        <a href="#" class="nav-item">Timeline</a>
+        <a href="#" class="nav-item">Settings</a>
+    </div>
+</nav>
+
+<!--Landing Page-->
+<div class="landing-page">
+    <h1>TaskNinja</h1>
+    <div class="landing-clock">
+        <div class="clock-container">
+            <div class="time-unit">
+                <div class="time-display">
+                    <span id="landing-hrs">00</span>
+                </div>
+                <div class="unit-label">HOURS</div>
+            </div>
+            <div class="separator">:</div>
+            <div class="time-unit">
+                <div class="time-display">
+                    <span id="landing-min">00</span>
+                </div>
+                <div class="unit-label">MINUTES</div>
+            </div>
+            <div class="separator">:</div>
+            <div class="time-unit">
+                <div class="time-display">
+                    <span id="landing-sec">00</span>
+                </div>
+                <div class="unit-label">SECONDS</div>
+            </div>
+        </div>
     </div>
 </div>
+
+
+
+<script>
+let landingHrs = document.getElementById("landing-hrs");
+let landingMin = document.getElementById("landing-min");
+let landingSec = document.getElementById("landing-sec");
+
+setInterval(()=>{
+    let currentTime = new Date();
+    landingHrs.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
+    landingMin.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
+    landingSec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
+},1000)
+</script>
 <div class="container">
     <div class="todo-app">
         <h2>TaskNinja: Master Your Time; Elevate Your Day<img src="images/icon.png"></h2>
@@ -114,260 +159,6 @@ setInterval(()=>{
         <button onclick="addTimelineTask()">Add to Timeline</button>
     </div>
 </div>
-
-<style>
-.timeline-container {
-    width: 100%;
-    margin: 20px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    display: flex;
-    gap: 40px;
-    background: linear-gradient(135deg, #153677, #4e085f);
-}
-
-.timeline {
-    width: 400px;
-    height: 80vh;
-    position: relative;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-.timeline-line {
-    height: 100%;
-    display: flex;
-    gap: 20px;
-}
-
-.hour-markers {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    padding: 0 10px;
-    border-right: 1px solid #ddd;
-}
-
-.hour-label {
-    font-size: 12px;
-    color: #555;
-    position: relative;
-    right: 5px;
-    transform: translateY(-50%);
-}
-
-.timeline-track {
-    flex: 1;
-    background: #f0f0f0;
-    border-radius: 10px;
-    position: relative;
-    margin: 10px 0;
-}
-
-.timeline-task {
-    position: absolute;
-    width: 90%;
-    left: 5%;
-    background: #4CAF50;
-    border-radius: 5px;
-    color: white;
-    font-size: 12px;
-    padding: 5px;
-    cursor: pointer;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    transition: background-color 0.3s;
-}
-
-.timeline-task:hover {
-    background: #45a049;
-}
-
-.task-details-panel {
-    width: 600px;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-    margin-left: 20px;
-}
-
-.task-details-panel.hidden {
-    display: none;
-}
-
-#task-details {
-    padding: 15px;
-}
-
-#task-details h3 {
-    margin-top: 0;
-    color: #333;
-}
-
-#detail-title {
-    font-weight: bold;
-    margin-bottom: 10px;
-}
-
-#detail-time {
-    color: #666;
-    margin-bottom: 15px;
-}
-
-#detail-description {
-    line-height: 1.4;
-}
-
-.timeline-form {
-    width: 600px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px;
-    background: white;
-    border-radius: 10px;
-}
-
-.timeline-form input, .timeline-form textarea {
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
-}
-
-.timeline-form textarea {
-    height: 120px;
-    resize: vertical;
-}
-
-.time-input-group, .duration-input-group {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.time-input-group input, .duration-input-group input {
-    width: 80px;
-}
-
-.timeline-form button {
-    padding: 12px 20px;
-    background: #153677;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.timeline-form button:hover {
-    background: #4e085f;
-}
-
-.hidden {
-    display: none;
-}
-</style>
-
-<script>
-function showTaskDetails(task) {
-    const detailsPanel = document.getElementById('task-details');
-    const detailTitle = document.getElementById('detail-title');
-    const detailTime = document.getElementById('detail-time');
-    const detailDescription = document.getElementById('detail-description');
-
-    detailTitle.textContent = task.dataset.title;
-    detailTime.textContent = `${task.dataset.timeRange}`;
-    detailDescription.textContent = task.dataset.description;
-    
-    detailsPanel.classList.remove('hidden');
-}
-
-function addTimelineTask() {
-    const taskTitle = document.getElementById('task-name').value;
-    const taskDescription = document.getElementById('task-description').value;
-    const startHours = parseInt(document.getElementById('start-hours').value);
-    const startMinutes = parseInt(document.getElementById('start-minutes').value);
-    const durationHours = parseInt(document.getElementById('duration-hours').value) || 0;
-    const durationMinutes = parseInt(document.getElementById('duration-minutes').value) || 0;
-    
-    if (!taskTitle || isNaN(startHours) || isNaN(startMinutes) || 
-        (durationHours === 0 && durationMinutes === 0)) {
-        alert('Please fill in all required fields');
-        return;
-    }
-
-    if (startHours < 0 || startHours > 23 || startMinutes < 0 || startMinutes > 59) {
-        alert('Please enter valid time values');
-        return;
-    }
-
-    // Convert start time to minutes since midnight
-    const startInMinutes = startHours * 60 + startMinutes;
-    const duration = durationHours * 60 + durationMinutes;
-    const endMinutes = startInMinutes + duration;
-
-    if (endMinutes > 24 * 60) {
-        alert('Task extends beyond 24 hours');
-        return;
-    }
-
-    // Check for overlapping tasks
-    const existingTasks = document.querySelectorAll('.timeline-task');
-    for (let task of existingTasks) {
-        const taskStart = parseInt(task.dataset.start);
-        const taskEnd = parseInt(task.dataset.end);
-        
-        if ((startInMinutes >= taskStart && startInMinutes < taskEnd) ||
-            (endMinutes > taskStart && endMinutes <= taskEnd) ||
-            (startInMinutes <= taskStart && endMinutes >= taskEnd)) {
-            alert('This time slot overlaps with an existing task!');
-            return;
-        }
-    }
-
-    // Create task element
-    const timeline = document.querySelector('.timeline-track');
-    const task = document.createElement('div');
-    task.className = 'timeline-task';
-    task.textContent = taskTitle;
-    
-    const timeRange = `${startHours}:${startMinutes.toString().padStart(2, '0')} - ${Math.floor(endMinutes/60)}:${(endMinutes%60).toString().padStart(2, '0')}`;
-    
-    // Store task data
-    task.dataset.title = taskTitle;
-    task.dataset.description = taskDescription;
-    task.dataset.timeRange = timeRange;
-    task.dataset.start = startInMinutes;
-    task.dataset.end = endMinutes;
-    
-    // Position and height calculations
-    const top = (startInMinutes / (24 * 60)) * 100;
-    const height = (duration / (24 * 60)) * 100;
-    
-    task.style.top = top + '%';
-    task.style.height = height + '%';
-
-    // Add click event to show details
-    task.addEventListener('click', () => showTaskDetails(task));
-
-    timeline.appendChild(task);
-
-    // Clear form
-    document.getElementById('task-name').value = '';
-    document.getElementById('task-description').value = '';
-    document.getElementById('start-hours').value = '';
-    document.getElementById('start-minutes').value = '';
-    document.getElementById('duration-hours').value = '';
-    document.getElementById('duration-minutes').value = '';
-}
-</script>
 
 
 
