@@ -9,7 +9,14 @@ function addTask(){
         li.innerHTML = inputBox.value;
         listContainer.appendChild(li);
         let span = document.createElement("span")
-        span.innerHTML = "\u00d7"
+        span.innerHTML = "X"
+        span.style.transition = "color 0.2s"; // Add transition for smooth color change
+        span.addEventListener("mouseover", () => {
+            span.style.color = "red";
+        });
+        span.addEventListener("mouseout", () => {
+            span.style.color = ""; // Reset to default color
+        });
         li.appendChild(span);
     }
     inputBox.value = "";
@@ -46,11 +53,64 @@ function showTaskDetails(task) {
     const detailTime = document.getElementById('detail-time');
     const detailDescription = document.getElementById('detail-description');
 
+    // Create close button if it doesn't exist
+    if (!document.getElementById('close-task-details')) {
+        const closeButton = document.createElement('button');
+        closeButton.id = 'close-task-details';
+        closeButton.innerHTML = 'X';
+        closeButton.style.position = 'absolute';
+        closeButton.style.right = '10px';
+        closeButton.style.top = '10px';
+        closeButton.style.background = 'none';
+        closeButton.style.border = 'none';
+        closeButton.style.fontSize = '24px';
+        closeButton.style.cursor = 'pointer';
+        closeButton.style.color = '#666';
+        closeButton.style.transition = "color 0.2s"; // Add transition for smooth color change
+        
+        closeButton.addEventListener('mouseover', () => {
+            closeButton.style.color = 'red';
+        });
+        
+        closeButton.addEventListener('mouseout', () => {
+            closeButton.style.color = '#666';
+        });
+        
+        closeButton.addEventListener('click', () => {
+            const taskElement = document.querySelector(`.timeline-task[data-title="${task.dataset.title}"][data-time-range="${task.dataset.timeRange}"]`);
+            if (taskElement) {
+                taskElement.remove();
+                saveTimelineData();
+            }
+            detailsPanel.classList.add('hidden');
+        });
+        
+        detailsPanel.insertBefore(closeButton, detailsPanel.firstChild);
+    }
+
     detailTitle.textContent = task.dataset.title;
     detailTime.textContent = `${task.dataset.timeRange}`;
     detailDescription.textContent = task.dataset.description;
     
     detailsPanel.classList.remove('hidden');
+}
+
+function saveTimelineData() {
+    const timeline = document.querySelector('.timeline-track');
+    localStorage.setItem("timelineData", timeline.innerHTML);
+}
+
+function loadTimelineData() {
+    const timeline = document.querySelector('.timeline-track');
+    const savedData = localStorage.getItem("timelineData");
+    if (savedData) {
+        timeline.innerHTML = savedData;
+        // Reattach event listeners to loaded tasks
+        const tasks = timeline.querySelectorAll('.timeline-task');
+        tasks.forEach(task => {
+            task.addEventListener('click', () => showTaskDetails(task));
+        });
+    }
 }
 
 function addTimelineTask() {
@@ -122,6 +182,7 @@ function addTimelineTask() {
     task.addEventListener('click', () => showTaskDetails(task));
 
     timeline.appendChild(task);
+    saveTimelineData(); // Save timeline data after adding new task
 
     // Clear form
     document.getElementById('task-name').value = '';
@@ -131,6 +192,33 @@ function addTimelineTask() {
     document.getElementById('duration-hours').value = '';
     document.getElementById('duration-minutes').value = '';
 }
+
+// Load timeline data when page loads
+document.addEventListener('DOMContentLoaded', loadTimelineData);
+
+let landingHrs = document.getElementById("landing-hrs");
+let landingMin = document.getElementById("landing-min");
+let landingSec = document.getElementById("landing-sec");
+
+setInterval(()=>{
+    let currentTime = new Date();
+    landingHrs.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
+    landingMin.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
+    landingSec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
+},1000)
+
+let hrs = document.getElementById("hrs");
+let min = document.getElementById("min");
+let sec = document.getElementById("sec");
+
+setInterval(()=>{
+    let currentTime = new Date();
+
+    hrs.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
+    min.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
+    sec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
+
+},1000)
 
 
 // Modify the existing addTask function
@@ -148,7 +236,14 @@ function addTask() {
     
     listContainer.appendChild(li);
     let span = document.createElement("span");
-    span.innerHTML = "\u00d7";
+    span.innerHTML = "X";
+    span.style.transition = "color 0.2s"; // Add transition for smooth color change
+    span.addEventListener("mouseover", () => {
+        span.style.color = "red";
+    });
+    span.addEventListener("mouseout", () => {
+        span.style.color = ""; // Reset to default color
+    });
     li.appendChild(span);
     
     inputBox.value = "";

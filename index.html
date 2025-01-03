@@ -3,7 +3,7 @@
 <link rel="icon" href="images/taskninja.png">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kishan Suhi - TaskNinja</title>
+<title>ManageTask</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,16 +11,15 @@
 <!--Navbar-->
 <nav class="navbar">
     <div class="nav-links">
-        <a href="#" class="nav-item">Home</a>
-        <a href="#" class="nav-item">Tasks</a>
-        <a href="#" class="nav-item">Timeline</a>
-        <a href="#" class="nav-item">Settings</a>
+        <a href="#home" class="nav-item">Home</a>
+        <a href="#tasks" class="nav-item">Tasks</a>
+        <a href="#timeline" class="nav-item">Timeline</a>
     </div>
 </nav>
 
 <!--Landing Page-->
-<div class="landing-page">
-    <h1>TaskNinja</h1>
+<section id="home" class="landing-page">
+    <h1>Welocome to ManageTask</h1>
     <div class="landing-clock">
         <div class="clock-container">
             <div class="time-unit">
@@ -45,57 +44,33 @@
             </div>
         </div>
     </div>
-</div>
+</section>
 
+<section id="tasks">
+    <div class="container">
+        <div class="todo-app">
+            <h2>Task List <img src="images/icon.png"></h2>
+            <div class="row">
+                <input type="text" id="input-box" placeholder="Add Your Task">
+                <button onclick="addTask()">Add Task</button>
+            </div>
 
-
-<script>
-let landingHrs = document.getElementById("landing-hrs");
-let landingMin = document.getElementById("landing-min");
-let landingSec = document.getElementById("landing-sec");
-
-setInterval(()=>{
-    let currentTime = new Date();
-    landingHrs.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
-    landingMin.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
-    landingSec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
-},1000)
-</script>
-<div class="container">
-    <div class="todo-app">
-        <h2>TaskNinja: Master Your Time; Elevate Your Day<img src="images/icon.png"></h2>
-        <div class="row">
-            <input type="text" id="input-box" placeholder="Add Your Task">
-            <button onclick="addTask()">Add Task</button>
+            <ul id="list-container">
+            </ul>
         </div>
-
-        <ul id="list-container">
-        </ul>
     </div>
+</section>
 
-</div>
 
-<script>
-let hrs = document.getElementById("hrs");
-let min = document.getElementById("min");
-let sec = document.getElementById("sec");
 
-setInterval(()=>{
-    let currentTime = new Date();
+<section id="timeline">
+    <p>.</p>
+    <p>.</p>
+    <p>.</p>
 
-    hrs.innerHTML = (currentTime.getHours()<10?"0":"") + currentTime.getHours();
-    min.innerHTML = (currentTime.getMinutes()<10?"0":"") + currentTime.getMinutes();
-    sec.innerHTML = (currentTime.getSeconds()<10?"0":"") + currentTime.getSeconds();
-
-},1000)
-
-</script>
-
-<script src="script.js"></script>
-
-</body>
-</html>
-
+    <div class="todo-app timeline-header" style="width: 300px; margin: 10px auto; padding: 10px;">
+        <h2>Timeline <img src="images/icon.png"></h2>
+    </div>
 <div class="timeline-container">
     <div class="timeline">
         <div class="timeline-line">
@@ -158,8 +133,8 @@ setInterval(()=>{
         </div>
         <button onclick="addTimelineTask()">Add to Timeline</button>
     </div>
-</div>
+</section>
 
-
-
-
+<script src="script.js"></script>
+</body>
+</html>

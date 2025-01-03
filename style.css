@@ -7,6 +7,17 @@
     font-family: 'Poppins', sans-serif;
     box-sizing: border-box;
 }
+
+/* Add gradient background to html and body */
+html, body {
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #224252 0%, #4e085f 100%) fixed;
+    background-attachment: fixed;
+    color: #fff;
+}
+
 .coolbox{
     width: 800px;
     height: 160px;
@@ -15,10 +26,10 @@
     left: 50%;
     transform: translate(-50%,-50%);
 }
+
 .container{
     width: 100%;
     min-height: 100vh;
-    background: linear-gradient(180deg,#153677,#4e085f);
     padding: 10px;
 }
 
@@ -32,9 +43,7 @@
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(40px);
-
 }
-
 
 .clock span{
     font-size: 80px;
@@ -67,15 +76,17 @@
 .todo-app{
     width:100%;
     max-width: 1000px;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     margin: 200px auto 20px;
     padding: 40px 30px 70px;
     border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .todo-app h2{
     justify-content: center;
-    color:#002765;
+    color: #fff;
     display: flex;
     align-items: center;
     margin-bottom: 20px;
@@ -85,11 +96,12 @@
     width: 30px;
     margin-left: 10px;
 }
+
 .row{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #edeef0;
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 30px;
     padding-left: 20px;
     margin-bottom: 25px;
@@ -101,13 +113,14 @@ input{
     outline: none;
     background: transparent;
     padding: 10px;
+    color: #fff;
 }
 
 button{
     border: none;
     outline: none;
     padding: 16px 50px;
-    background: #ff5945;
+    background: rgba(255, 89, 69, 0.8);
     color:#fff;
     font-size: 16px;
     cursor: pointer;
@@ -121,6 +134,10 @@ ul li{
     user-select: none;
     cursor: pointer;
     position: relative;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 8px;
+    border-radius: 5px;
+    color: #fff;
 }
 
 ul li::before{
@@ -137,7 +154,7 @@ ul li::before{
 }
 
 ul li.checked{
-    color: #555;
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: line-through;
 }
 
@@ -152,22 +169,14 @@ ul li span{
     width: 40px;
     height: 40px;
     font-size: 22px;
-    color: #555;
+    color: #fff;
     line-height: 40px;
     text-align: center;
     border-radius: 50%;
 }
 
 ul li span:hover{
-    background: #edeef0;
-}
-
-body {
-    margin: 0;
-    padding: 0;
-    background: linear-gradient(360deg, #153677, #4e085f);
-    min-height: 100vh;
-    background-attachment: fixed;
+    background: rgba(255, 255, 255, 0.2);
 }
 
 .navbar {
@@ -176,7 +185,8 @@ body {
     left: 0;
     width: 100%;
     height: 60px;
-    background: linear-gradient(135deg, #153677 0%, #4e085f 100%);
+    background: rgba(34, 66, 82, 0.8);
+    backdrop-filter: blur(10px);
     z-index: 100;
     display: flex;
     justify-content: center;
@@ -226,7 +236,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 60px; /* Account for fixed navbar */
+    padding-top: 60px;
 }
 
 .landing-page h1 {
@@ -284,7 +294,6 @@ body {
     text-shadow: 0 0 10px rgba(255,255,255,0.3);
 }
 
-/* Ensure smooth scrolling for the entire page */
 html {
     scroll-behavior: smooth;
 }
@@ -293,21 +302,22 @@ html {
     width: 100%;
     margin: 20px auto;
     padding: 20px;
-    background: #fff;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     display: flex;
     gap: 40px;
-    background: linear-gradient(135deg, #153677, #4e085f);
+    background: rgba(34, 66, 82, 0.3);
+    backdrop-filter: blur(10px);
 }
 
 .timeline {
     width: 400px;
     height: 80vh;
     position: relative;
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
     padding: 20px;
     border-radius: 10px;
+    backdrop-filter: blur(10px);
 }
 
 .timeline-line {
@@ -322,12 +332,12 @@ html {
     justify-content: space-between;
     height: 100%;
     padding: 0 10px;
-    border-right: 1px solid #ddd;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .hour-label {
     font-size: 12px;
-    color: #555;
+    color: rgba(255, 255, 255, 0.8);
     position: relative;
     right: 5px;
     transform: translateY(-50%);
@@ -335,7 +345,7 @@ html {
 
 .timeline-track {
     flex: 1;
-    background: #f0f0f0;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 10px;
     position: relative;
     margin: 10px 0;
@@ -345,7 +355,7 @@ html {
     position: absolute;
     width: 90%;
     left: 5%;
-    background: #4CAF50;
+    background: rgba(76, 175, 80, 0.8);
     border-radius: 5px;
     color: white;
     font-size: 12px;
@@ -358,15 +368,18 @@ html {
 }
 
 .timeline-task:hover {
-    background: #45a049;
+    background: rgba(69, 160, 73, 0.9);
 }
 
 .task-details-panel {
     width: 600px;
     padding: 20px;
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
     margin-left: 20px;
+    position: relative;
+    color: #fff;
 }
 
 .task-details-panel.hidden {
@@ -375,11 +388,12 @@ html {
 
 #task-details {
     padding: 15px;
+    position: relative;
 }
 
 #task-details h3 {
     margin-top: 0;
-    color: #333;
+    color: #fff;
 }
 
 #detail-title {
@@ -388,12 +402,12 @@ html {
 }
 
 #detail-time {
-    color: #666;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 15px;
 }
 
 #detail-description {
-    line-height: 1.4;
+    line-height: 1.9;
 }
 
 .timeline-form {
@@ -402,15 +416,18 @@ html {
     flex-direction: column;
     gap: 10px;
     padding: 20px;
-    background: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     border-radius: 10px;
 }
 
 .timeline-form input, .timeline-form textarea {
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
 
 .timeline-form textarea {
@@ -430,7 +447,7 @@ html {
 
 .timeline-form button {
     padding: 12px 20px;
-    background: #153677;
+    background: rgba(21, 54, 119, 0.8);
     color: white;
     border: none;
     border-radius: 5px;
@@ -440,28 +457,27 @@ html {
 }
 
 .timeline-form button:hover {
-    background: #4e085f;
+    background: rgba(78, 8, 95, 0.9);
 }
 
 .hidden {
     display: none;
 }
 
-/* Priority styles for todo list items */
 #list-container li[data-priority="p1"] {
-    border-left: 5px solid #ff4444;
+    border-left: 5px solid rgba(255, 68, 68, 0.8);
 }
 
 #list-container li[data-priority="p2"] {
-    border-left: 5px solid #ffa500;
+    border-left: 5px solid rgba(255, 165, 0, 0.8);
 }
 
 #list-container li[data-priority="p3"] {
-    border-left: 5px solid #4CAF50;
+    border-left: 5px solid rgba(76, 175, 80, 0.8);
 }
 
 #list-container li[data-priority="p4"] {
-    border-left: 5px solid #666;
+    border-left: 5px solid rgba(102, 102, 102, 0.8);
 }
 
 .priority-selector {
@@ -471,75 +487,61 @@ html {
 
 .priority-selector select {
     padding: 8px;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 5px;
     font-size: 14px;
-    background-color: white;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
     cursor: pointer;
 }
 
-/* Maintain colors on hover for options */
-.priority-selector select option[value="p1"] {
-    background-color: #ffebeb;
-    color: #ff4444;
-    font-weight: bold;
+.priority-selector select option {
+    background: rgba(34, 66, 82, 0.9);
 }
 
-.priority-selector select option[value="p1"]:hover {
-    background-color: #ffe0e0 !important;
-    color: #ff4444 !important;
-}
-
-.priority-selector select option[value="p2"] {
-    background-color: #fff3e0;
-    color: #ffa500;
-    font-weight: bold;
-}
-
-.priority-selector select option[value="p2"]:hover {
-    background-color: #ffe8cc !important;
-    color: #ffa500 !important;
-}
-
-.priority-selector select option[value="p3"] {
-    background-color: #e8f5e9;
-    color: #4CAF50;
-    font-weight: bold;
-}
-
-.priority-selector select option[value="p3"]:hover {
-    background-color: #ddeede !important;
-    color: #4CAF50 !important;
-}
-
-.priority-selector select option[value="p4"] {
-    background-color: #f5f5f5;
-    color: #666;
-}
-
-.priority-selector select option[value="p4"]:hover {
-    background-color: #ebebeb !important;
-    color: #666 !important;
-}
-
-/* Style for the select element when opened */
 .priority-selector select:focus {
     outline: none;
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+    box-shadow: 0 0 5px rgba(255,255,255,0.2);
 }
 
-/* Custom hover states for the select itself */
 .priority-selector select:hover {
-    border-color: #aaa;
+    border-color: rgba(255, 255, 255, 0.4);
 }
 
-/* Modify the existing row class to accommodate the priority selector */
 .row {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+    background: rgba(255, 255, 255, 0.1);
     border-radius: 30px;
     padding-left: 20px;
     margin-bottom: 25px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(78, 8, 95, 0.5);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(34, 66, 82, 0.9);
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(34, 66, 82, 1);
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(34, 66, 82, 0.9) rgba(78, 8, 95, 0.5);
+}
+
+p{
+    color:rgba(34, 66, 82, 0.8)
 }
