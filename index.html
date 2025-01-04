@@ -120,16 +120,16 @@
 
     <div class="timeline-form">
         <input type="text" id="task-name" placeholder="Task title">
-        <textarea id="task-description" placeholder="Task description"></textarea>
+        <textarea id="task-description" placeholder="Task description" style="height: 484px;"></textarea>
         <div class="time-input-group">
-            <input type="number" id="start-hours" placeholder="HH" min="0" max="23">
+            <input type="number" id="start-hours" placeholder="Time when start - H" min="0" max="23">
             <span>:</span>
-            <input type="number" id="start-minutes" placeholder="MM" min="0" max="59">
+            <input type="number" id="start-minutes" placeholder="Time when start - M" min="0" max="59">
         </div>
         <div class="duration-input-group">
-            <input type="number" id="duration-hours" placeholder="Hours" min="0" max="23">
+            <input type="number" id="duration-hours" placeholder="Length - Hours" min="0" max="23">
             <span>h</span>
-            <input type="number" id="duration-minutes" placeholder="Minutes" min="0" max="59">
+            <input type="number" id="duration-minutes" placeholder="Length - Minutes" min="0" max="59">
             <span>m</span>
         </div>
         <button onclick="addTimelineTask()">Add to Timeline</button>
